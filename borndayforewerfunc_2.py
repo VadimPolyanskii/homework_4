@@ -6,21 +6,14 @@
 Задание: переписать код используя как минимум 1 функцию
 """
 
-year = 1799         # Год рождения А.С.Пушкина
-day = 6.07             # День рождения А.С.Пушкина
+
+def question_date(question, date):
+    answer = input(question)
+    while answer != date:
+        print('Неверно!')
+        answer = input(question)
 
 
-def date_birth(year, day):
-    year_birth = int(input("Введите год рождения А.С.Пушкина: "))
-    while year_birth != year:
-            print("Неверно! Попробуйте ещё раз")
-            year_birth = int(input("Введите год рождения А.С.Пушкина: "))
-
-    day_birth = float(input("Введите день и меняц рождения А.С.Пушкина двузначными цифрами: "))
-    while day_birth != day:
-            print("Неверно! Попробуйте ещё раз")
-            day_birth = float(input("Введите день и меняц рождения А.С.Пушкина двузначными цифрами: "))
-    print("Верно!")
-
-
-date_birth(year, day)
+question_date('Введите год рождения А.С.Пушкина: ', '1799')
+question_date('Введите день и месяц рождения А.С.Пушкина цифрами: ', '6.07')
+print("Верно!")
