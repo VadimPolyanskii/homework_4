@@ -9,20 +9,14 @@
 """
 
 
-print('Функция 1')
-def simple_separator():
+def separator(symbol, count):
     """
-    Функция создает красивый резделитель из 10-и звездочек (**********)
-    :return: **********
+    Функция создает разделитель из любых символов любого количества
+    :param symbol: символ разделителя
+    :param count: количество повторений
+    :return: строка разделитель примеры использования ниже
     """
-    print('*' * 10)
-
-
-simple_separator()
-
-print()
-
-print('Функция 2')
+    return symbol * count
 
 
 def long_separator(count):
@@ -31,54 +25,27 @@ def long_separator(count):
     :param count: количество звездочек
     :return: строка разделитель, примеры использования ниже
     """
-    print('*' * count)
+    return separator("*", count)
 
 
-long_separator(20)
-long_separator(60)
+def simple_separator():
+    """
+    Функция создает красивый резделитель из 10-и звездочек (**********)
+    :return: **********
+    """
+    return long_separator(10)
+
+
+print(simple_separator())
+
+print(long_separator(20))
+print(long_separator(60))
+
+
+print(separator('-', 40))
+print(separator('$', 45))
 
 print()
-print('Функция 3')
-
-
-def separator(symbol, count):
-    """
-    Функция создает разделитель из любых символов любого количества
-    :param symbol: символ разделителя
-    :param count: количество повторений
-    :return: строка разделитель примеры использования ниже
-    """
-    print(symbol * count)
-
-
-separator('-', 40)
-separator('$', 45)
-
-print()
-print('Функция 4')
-
-
-def hello_world():
-    """
-    Функция печатает Hello World в формате:
-    **********
-
-    Hello World!
-
-    ##########
-    :return: None
-    """
-    print('*' * 10)
-    print()
-    print('Hello World!')
-    print()
-    print('#' * 10)
-
-
-hello_world()
-
-print()
-print('Функция 5')
 
 
 def hello_who(who='World'):
@@ -92,41 +59,33 @@ def hello_who(who='World'):
     :param who: кого мы приветствуем, по умолчанию World
     :return: None
     """
-    print('*' * 10)
+    print(separator("*", 10))
     print()
     print(f'Hello {who}!')
     print()
-    print('#' * 10)
-    print('-' * 15, ';-)')
+    print(separator("#", 10))
 
 
-'''
-**********
+def hello_world():
+    """
+    Функция печатает Hello World в формате:
+    **********
 
-Hello World!
+    Hello World!
 
-##########
-'''
+    ##########
+    :return: None
+    """
+    hello_who()
+
+
+hello_world()
 hello_who()
-'''
-**********
 
-Hello Max!
-
-##########
-'''
 hello_who('Max')
-'''
-**********
-
-Hello Kate!
-
-##########
-'''
 hello_who('Kate')
 
 print()
-print('Функция 6')
 
 
 def pow_many(power, *args):
@@ -146,10 +105,7 @@ print(pow_many(3, 2) == 8)  # True -> 2**3 == 8
 print(pow_many(2, 1, 2, 3, 4) == 100)  # True -> (1 + 2 + 3 + 4)**2 == 10**2 == 10
 
 
-
-
 print()
-print('Функция 7')
 
 
 def print_key_val(**kwargs):
@@ -160,11 +116,8 @@ def print_key_val(**kwargs):
     :param kwargs: любое количество именованных параметров
     :return: None
     """
-    print('"""')
     for k, v in kwargs.items():
-        print(k, "-->", v)
-
-    print('"""')
+        print(f'{k} --> {v}')
 
 
 """
@@ -180,7 +133,6 @@ print_key_val(animal='Cat', is_animal=True)
 
 
 print()
-print('Функция 8')
 
 
 def my_filter(iterable, function):
@@ -195,10 +147,11 @@ def my_filter(iterable, function):
     """
     new_lst = []
     for el in iterable:
-        if function(el) == True:
+        if function(el):
             new_lst.append(el)
 
     return new_lst
+    # return list(filter(iterable, function))      # Другое решение
 
 
 def f(x):
