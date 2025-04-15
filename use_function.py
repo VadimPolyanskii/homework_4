@@ -36,11 +36,11 @@
 
 def personal_account():
     balance = 0             # Счёт
-    history = []            # Пустой список под историю покупок
+    history = []            # Cписок под историю покупок
 
     while True:
         print()
-        print('Баланс:', balance)
+        print(f'Баланс: {balance}')
         print('1. Пополнение счёта')
         print('2. Покупка')
         print('3. История покупок')
@@ -52,16 +52,15 @@ def personal_account():
             summ = int(input('Введите сумму пополнения: '))
             balance += summ            # Добавляем сумму на баланс
         elif choice == '2':
-            purchase_amount = int(input('Введите сумму покупки: '))
-            if purchase_amount > balance:
+            sum_buy = int(input('Введите сумму покупки: '))
+            if sum_buy > balance:
                 print('Недостаточно средств!')
-            elif purchase_amount <= balance:
-                purchase_name = input('Введите название покупки: ')
-                balance -= purchase_amount         # Вычитаем из баланса стоимость покупки
-                purchase = (purchase_name, purchase_amount)       # Кортеж из наименования покупки и её стоимости
-                history.append(purchase)         # Закидываем покупку в историю
+            else:
+                name = input('Введите название покупки: ')
+                balance -= sum_buy         # Вычитаем из баланса стоимость покупки
+                history.append((name, sum_buy))    # Вносим кортеж "название + цена" в историю
         elif choice == '3':
-            print('История покупок:', history)
+            print(f'История покупок: {history}')
         elif choice == '4':
             break
         else:
